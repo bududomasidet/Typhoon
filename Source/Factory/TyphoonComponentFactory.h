@@ -22,6 +22,7 @@
 @class TyphoonRuntimeArguments;
 @class TyphoonTypeConverterRegistry;
 
+
 /**
 *
 * @ingroup Assembly
@@ -101,6 +102,8 @@ Attach a TyphoonDefinitionPostProcessor to this component factory.
 
 @end
 
+@class TyphoonComponentFactory;
+typedef void (^TyphoonComponentFactoryPromiseBlock)(TyphoonComponentFactory *);
 /**
 *
 * @ingroup Assembly
@@ -160,6 +163,8 @@ Attach a TyphoonDefinitionPostProcessor to this component factory.
 + (id)defaultFactory;
 
 + (instancetype)newFactoryForResolvingUI;
+
++ (void)factoryForUiPromiseWithBlock:(TyphoonComponentFactoryPromiseBlock) promiseBlock;
 
 + (void)setFactoryForResolvingUI:(TyphoonComponentFactory *)factory;
 
