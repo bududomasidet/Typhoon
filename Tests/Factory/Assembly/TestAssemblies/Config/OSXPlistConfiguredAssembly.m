@@ -15,7 +15,7 @@
 #import "Knight.h"
 #import "CavalryMan.h"
 #import "TyphoonConfigPostProcessor.h"
-
+#import "TyphoonStoryboard.h"
 
 @implementation OSXPlistConfiguredAssembly
 {
@@ -26,6 +26,7 @@
 {
     return [TyphoonDefinition withClass:[TyphoonOSXAppDelegate class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(assembly) with:self];
+        [definition injectProperty:@selector(storyboard) with:[self storyboard]];
     }];
 }
 
@@ -35,6 +36,18 @@
         [definition injectProperty:@selector(damselsRescued) with:TyphoonConfig(@"damsels.rescued")];
         definition.scope = TyphoonScopeSingleton;
     }];
+}
+
+- (NSStoryboard *)storyboard {
+    return [TyphoonDefinition withClass:[TyphoonStoryboard class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition useInitializer:@selector(storyboardWithName:factory:bundle:)
+                                              parameters:^(TyphoonMethod *initializer) {
+                                                  [initializer injectParameterWith:@"Main"];
+                                                  [initializer injectParameterWith:self];
+                                                  [initializer injectParameterWith:nil];
+                                              }];
+                          }];
 }
 
 @end

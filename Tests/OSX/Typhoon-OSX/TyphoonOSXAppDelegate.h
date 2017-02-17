@@ -17,6 +17,7 @@
 
 @property (assign) IBOutlet NSWindow *window;
 @property (strong, nonatomic) iOSPlistConfiguredAssembly *assembly;
+@property (strong, nonatomic) NSStoryboard *storyboard;
 
 - (NSUInteger)damselsRescued;
 

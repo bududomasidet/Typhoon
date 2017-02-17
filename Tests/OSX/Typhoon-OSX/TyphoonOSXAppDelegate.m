@@ -18,6 +18,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    NSLog(@"Damsels rescued: %lu", (unsigned long)[self damselsRescued]);
+    self.window.contentViewController = [self.storyboard instantiateInitialController];
 }
 
 - (NSUInteger)damselsRescued

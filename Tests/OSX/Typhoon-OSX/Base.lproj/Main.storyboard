@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="uDI-nn-1tz">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
+    </dependencies>
+    <scenes>
+        <!--TyphoonOSX Controller-->
+        <scene sceneID="f8d-fO-cJc">
+            <objects>
+                <viewController storyboardIdentifier="MagicalViewController" id="uDI-nn-1tz" customClass="TyphoonOSXController" sceneMemberID="viewController">
+                    <view key="view" id="GKG-rY-SXp" customClass="TyphoonOSXView">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efX-wO-p1c">
+                                <rect key="frame" x="191" y="136" width="69" height="29"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="abp-4a-O1n">
+                                    <font key="font" metaFont="systemHeavy" size="24"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UA7-mR-Beu">
+                                <rect key="frame" x="159" y="173" width="133" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Today's special spell:" id="s7y-5F-vX4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="efX-wO-p1c" firstAttribute="top" secondItem="UA7-mR-Beu" secondAttribute="bottom" constant="8" symbolic="YES" id="CjB-Ji-m9J"/>
+                            <constraint firstItem="UA7-mR-Beu" firstAttribute="centerX" secondItem="efX-wO-p1c" secondAttribute="centerX" id="G2G-tR-5eB"/>
+                            <constraint firstItem="efX-wO-p1c" firstAttribute="centerY" secondItem="GKG-rY-SXp" secondAttribute="centerY" id="U6W-8a-01F"/>
+                            <constraint firstItem="efX-wO-p1c" firstAttribute="centerX" secondItem="GKG-rY-SXp" secondAttribute="centerX" id="vSY-8U-Ker"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="typhoonKey" value="magicalView"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="magicalSpellField" destination="efX-wO-p1c" id="amk-1F-89D"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <customObject id="fTa-3f-3PR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88" y="191"/>
+        </scene>
+    </scenes>
+</document>

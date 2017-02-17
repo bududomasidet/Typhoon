@@ -9,7 +9,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
 #import <XCTest/XCTest.h>
 #import "TyphoonInvocationUtilsTestObjects.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
@@ -17,7 +16,8 @@
 #import <objc/message.h>
 #import "ClassWithConstructor.h"
 
-#define retainCount(a) ((int)objc_msgSend(a, NSSelectorFromString(@"retainCount")))
+static int (*typed_msgSend)(id, SEL) = (void *)objc_msgSend;
+#define retainCount(a) (typed_msgSend((a), NSSelectorFromString(@"retainCount")))
 
 @interface TyphoonInvocationUtilsTests : XCTestCase
 
@@ -46,7 +46,6 @@
     NSInvocation *invocation = [TyphoonInvocationUtilsTests invocationForInstanceSelector:@selector(init) class:clazz];
 
     ObjectInitRetained *object = [invocation typhoon_resultOfInvokingOnAllocationForClass:clazz];
-
     XCTAssertEqual(retainCount(object), 1);
 }
 
