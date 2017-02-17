@@ -36,7 +36,7 @@ static const char *kTyphoonViewDidLoadBlock;
 + (void)swizzleViewDidLoadMethod
 {
     SEL sel = @selector(viewDidLoad);
-    Method method = class_getInstanceMethod([TyphoonViewControllerBaseClass class], sel);
+    Method method = class_getInstanceMethod([TyphoonViewControllerClass class], sel);
     
     void(*originalImp)(id, SEL) = (void (*)(id, SEL)) method_getImplementation(method);
     
@@ -50,7 +50,7 @@ static const char *kTyphoonViewDidLoadBlock;
         
         originalImp(instance, sel);
     });
-    
+
     method_setImplementation(method, adjustedImp);
 }
 

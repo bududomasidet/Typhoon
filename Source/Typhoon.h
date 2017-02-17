@@ -44,6 +44,7 @@ FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 #import "TyphoonDefinitionNamespace.h"
 #import "TyphoonStoryboard.h"
 #import "TyphoonNibLoader.h"
+#import "TyphoonLoadedView.h"
 #import "NSObject+FactoryHooks.h"
 
 #if TARGET_OS_IPHONE || TARGET_OS_TV
