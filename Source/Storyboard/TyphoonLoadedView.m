@@ -76,7 +76,7 @@
     [label drawRect:self.bounds];
 #else
 
-    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextRef context = [NSGraphicsContext currentContext].CGContext;
 
     [[NSColor colorWithWhite:0.93f alpha:1] setFill];
 
@@ -87,10 +87,10 @@
     label.editable = NO;
     label.maximumNumberOfLines = 0;
     label.alignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor colorWithWhite:0.78f alpha:1];
+    label.textColor = [NSColor colorWithWhite:0.78f alpha:1];
 
     NSFont *baseFont = [NSFont fontWithName:@"HelveticaNeue-CondensedBold" size:33];
-    NSFont *subtitleFont = [baseFont fontWithSize:24];
+    NSFont *subtitleFont = [NSFont fontWithName:@"HelveticaNeue-CondensedBold" size:24];
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"Typhoon Definition\n" attributes:@{NSFontAttributeName : baseFont}];
     if ([self typhoonKey]) {
         [string appendAttributedString:[[NSAttributedString alloc] initWithString:[self typhoonKey] attributes:@{
@@ -99,7 +99,7 @@
     } else {
         [string appendAttributedString:[[NSAttributedString alloc] initWithString:@"key is missing" attributes:@{
                                                                                                                  NSFontAttributeName : subtitleFont,
-                                                                                                                 NSForegroundColorAttributeName : [UIColor colorWithRed:0.74f green:0.18f blue:0.18f alpha:1.0f]
+                                                                                                                 NSForegroundColorAttributeName : [NSColor colorWithRed:0.74f green:0.18f blue:0.18f alpha:1.0f]
                                                                                                                  }]];
     }
     
