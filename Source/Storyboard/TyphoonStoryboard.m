@@ -44,12 +44,14 @@
 #endif
 }
 
-#if TARGET_OS_IPHONE || TARGET_OS_TV
-- (id)instantiateViewControllerWithIdentifier:(NSString *)identifier
-#elif TARGET_OS_MAC
-- (id)instantiateControllerWithIdentifier:(NSString *)identifier
+#if TARGET_OS_MAC
+- (id)instantiateControllerWithIdentifier:(NSString *)identifier {
+    return [self instantiateViewControllerWithIdentifier:identifier];
+}
 #endif
-{
+
+
+- (id)instantiateViewControllerWithIdentifier:(NSString *)identifier {
     NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
 
     TyphoonViewControllerBaseClass *cachedInstance = [TyphoonViewControllerFactory cachedViewControllerWithIdentifier:identifier storyboardName:self.storyboardName factory:self.factory];

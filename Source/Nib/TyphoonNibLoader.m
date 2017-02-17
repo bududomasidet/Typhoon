@@ -38,6 +38,10 @@
     return nibLoader;
 }
 
+- (id)instantiateControllerWithIdentifier:(NSString *)nibName {
+    return [self instantiateViewControllerWithIdentifier:nibName];
+}
+
 - (id)instantiateViewControllerWithIdentifier:(NSString *)nibName
 {
     NSAssert(self.factory, @"TyphoonNibLoader's factory property can't be nil!");

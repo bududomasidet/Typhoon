@@ -93,11 +93,8 @@ static NSDictionary *viewControllerTyphoonKeyMap;
     [context.viewControllerId valueToInjectWithContext:injectionContext completion:^(id value) {
         viewControllerId = value;
     }];
-#if TARGET_OS_IPHONE || TARGET_OS_TV
+
     TyphoonViewControllerBaseClass *viewController = [storyboard instantiateViewControllerWithIdentifier:viewControllerId];
-#elif TARGET_OS_MAC
-    TyphoonViewControllerBaseClass *viewController = [storyboard instantiateControllerWithIdentifier:viewControllerId];
-#endif
     
     NSString *key = [self viewControllerMapKeyWithIdentifier:viewControllerId storyboardName:storyboardName];
     [self cacheControllerClass:[viewController class] forKey:key];

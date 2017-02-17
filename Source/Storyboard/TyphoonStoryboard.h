@@ -9,11 +9,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifdef __IPHONE_5_0
-
 #import "TyphoonPlatform.h"
 #import "TyphoonComponentFactory.h"
-
 
 /**
  * TyphoonStoryboard will inject properties for each view controller created by storyboard.
@@ -41,6 +38,13 @@ NS_CLASS_AVAILABLE(10_10, 5_0)
 
 - (TyphoonViewControllerBaseClass *)instantiatePrototypeViewControllerWithIdentifier:(NSString *)identifier;
 
+@end
+
+
+#if (!TARGET_OS_IPHONE || TARGET_OS_TV)
+
+@interface NSStoryboard (TyphoonStoryboard)
+- (id)instantiateViewControllerWithIdentifier:(NSString *)identifier;
 @end
 
 #endif
