@@ -24,6 +24,7 @@
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "RectModel.h"
 #import "PrimitiveMan.h"
+#import "DummyQuest.h"
 
 @implementation MiddleAgesAssembly
 
@@ -251,6 +252,25 @@
     }];
 }
 
+- (id)knightWithMethodInjectionSingleArgumentQuest
+{
+    return [TyphoonDefinition withClass:[DummyQuest class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(imageUrl) with:[NSURL URLWithString:@"http://appsquick.ly"]];
+        [definition injectMethod:@selector(setContext:) parameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:[self knightWithMethodInjectionSingleArgument]];
+        }];
+    }];
+}
+
+- (id)knightWithMethodInjectionSingleArgument
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectMethod:@selector(setFavoriteQuest:) parameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:[self knightWithMethodInjectionSingleArgumentQuest]];
+        }];
+    }];
+}
+
 - (id)knightWithFoobar:(NSString *)foobar
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
@@ -388,7 +408,7 @@
 
 - (NSString *(^)(void))blockDefinition
 {
-    return [TyphoonDefinition with:^NSString *(){
+    return [TyphoonDefinition with:^NSString *(void){
         return @"321";
     }];
 }

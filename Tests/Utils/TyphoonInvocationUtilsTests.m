@@ -73,7 +73,7 @@ static int (*typed_msgSend)(id, SEL) = (void *)objc_msgSend;
     NSObject *retainedObject = [NSObject new];
     
     NSInvocation *invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(setBlock:) class:[ObjectBlockArgument class]];
-    void (^Block)() = ^{
+    void (^Block)(void) = ^{
         if (retainedObject) {
             ///
         }
